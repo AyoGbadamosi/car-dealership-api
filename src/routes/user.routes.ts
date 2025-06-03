@@ -11,7 +11,6 @@ import {
 
 const router = Router();
 
-// All routes are protected and admin-only
 router.use(authenticate);
 
 // Customer routes
@@ -27,7 +26,7 @@ router.get(
   getCustomerById
 );
 
-// Manager routes
+// Protected routes (admin only)
 router.get("/managers", authorize([UserRole.ADMIN]), getAllManagers);
 router.get(
   "/managers/:id",

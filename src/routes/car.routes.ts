@@ -14,8 +14,6 @@ import { validateObjectId } from "../middleware/validateId.middleware";
 import { createCarSchema, updateCarSchema } from "../schemas/validation";
 
 const router = Router();
-
-// All routes require authentication
 router.use(authenticate);
 
 // Public routes (authenticated users)
@@ -23,7 +21,7 @@ router.get("/", getCars);
 router.get("/:id", validateObjectId, getCarById);
 router.get("/category/:category", getCarsByCategory);
 
-// Protected routes (manager only)
+// Protected routes (manager and admin only)
 router.post(
   "/",
   authorize([UserRole.MANAGER, UserRole.ADMIN]),

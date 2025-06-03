@@ -7,7 +7,6 @@ import {
 } from "../schemas/validation/auth.validation";
 import { AuthService } from "../services/auth.service";
 
-// Extend Express Request type to include user
 interface AuthenticatedRequest extends Request {
   user?: {
     id: string;
@@ -38,7 +37,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       data: result,
     });
   } catch (error: any) {
-    // Handle duplicate key errors
     if (error.code === 11000) {
       const field = Object.keys(error.keyPattern)[0];
       const value = error.keyValue[field];

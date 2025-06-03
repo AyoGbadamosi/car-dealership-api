@@ -17,14 +17,13 @@ import { UserRole } from "../enums/role.enum";
 
 const router = Router();
 
-// All routes require authentication
 router.use(authenticate);
 
 // Public routes (authenticated users)
 router.get("/", getCategories);
 router.get("/:id", validateObjectId, getCategoryById);
 
-// Protected routes (manager only)
+// Protected routes (manager and admin only)
 router.post(
   "/",
   authorize([UserRole.MANAGER, UserRole.ADMIN]),

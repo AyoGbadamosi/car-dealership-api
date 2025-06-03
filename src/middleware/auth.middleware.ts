@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { UserRole } from "../enums/role.enum";
 
-// Extend Express Request type to include user
 export interface AuthenticatedRequest extends Request {
   user?: {
     id: string;

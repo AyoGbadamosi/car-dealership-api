@@ -8,7 +8,6 @@ import { CarService } from "../services/car.service";
 
 const carService = new CarService();
 
-// Create a new car
 export const createCar = async (
   req: AuthenticatedRequest,
   res: Response
@@ -42,7 +41,6 @@ export const createCar = async (
   }
 };
 
-// Get all cars with pagination, filtering, and search
 export const getCars = async (req: Request, res: Response): Promise<void> => {
   try {
     const result = await carService.getCars(req.query);
@@ -59,7 +57,6 @@ export const getCars = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// Get car by ID
 export const getCarById = async (
   req: Request,
   res: Response
@@ -79,7 +76,6 @@ export const getCarById = async (
   }
 };
 
-// Update car
 export const updateCar = async (
   req: AuthenticatedRequest,
   res: Response
@@ -106,7 +102,6 @@ export const updateCar = async (
   }
 };
 
-// Delete car
 export const deleteCar = async (
   req: AuthenticatedRequest,
   res: Response
@@ -125,7 +120,6 @@ export const deleteCar = async (
   }
 };
 
-// Get cars by category
 export const getCarsByCategory = async (
   req: Request,
   res: Response

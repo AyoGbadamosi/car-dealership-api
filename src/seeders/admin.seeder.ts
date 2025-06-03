@@ -7,11 +7,9 @@ dotenv.config();
 
 const seedAdmin = async (): Promise<void> => {
   try {
-    // Connect to MongoDB
     await mongoose.connect(process.env.MONGODB_URI as string);
     console.log("Connected to MongoDB");
 
-    // Check if admin already exists
     const existingAdmin = await Admin.findOne({
       email: "admin@cardealers.com",
     });
@@ -20,7 +18,6 @@ const seedAdmin = async (): Promise<void> => {
       return;
     }
 
-    // Create admin user
     const admin = new Admin({
       email: "admin@cardealers.com",
       password: "Password1@",
@@ -37,5 +34,4 @@ const seedAdmin = async (): Promise<void> => {
   }
 };
 
-// Run the seeder
 seedAdmin();

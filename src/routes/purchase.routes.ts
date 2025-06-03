@@ -13,10 +13,9 @@ import {
 
 const router = Router();
 
-// All routes require authentication
 router.use(authenticate);
 
-// Customer routes
+// Public routes (authenticated users)
 router.post("/", validate(createPurchaseSchema), createPurchase);
 router.get(
   "/my-purchases",
@@ -24,7 +23,7 @@ router.get(
   getCustomerPurchases
 );
 
-// Admin/Manager routes
+// Protected routes (manager and admin only)
 router.get("/", authorize([UserRole.ADMIN, UserRole.MANAGER]), getAllPurchases);
 router.get(
   "/:id",

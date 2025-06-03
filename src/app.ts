@@ -10,37 +10,30 @@ import categoryRoutes from "./routes/category.routes";
 import userRoutes from "./routes/user.routes";
 import purchaseRoutes from "./routes/purchase.routes";
 
-// Load environment variables
 config();
 
-// Create Express app
 const app: Express = express();
 
-// Connect to MongoDB
 if (process.env.NODE_ENV !== "test") {
   connectDB();
 }
 
-// Middleware
 app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/cars", carRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/purchases", purchaseRoutes);
 
-// Basic route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Car Dealership API" });
 });
 
-// Error handling middleware
 app.use(
   (
     err: Error,
@@ -56,7 +49,6 @@ app.use(
   }
 );
 
-// Start server
 const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {

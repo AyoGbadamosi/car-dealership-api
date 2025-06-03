@@ -12,7 +12,7 @@ import {
   formatManagerResponse,
   formatCustomerResponse,
 } from "../utils/format.utils";
-import { IAdmin, ICustomer } from "../interfaces/index";
+import { IAdmin } from "../interfaces/index";
 
 export class AuthService {
   async registerManager(managerData: ManagerRegisterInput) {

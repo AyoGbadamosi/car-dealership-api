@@ -3,7 +3,6 @@ import { UserService } from "../services/user.service";
 
 const userService = new UserService();
 
-// Get all customers
 export const getAllCustomers = async (
   req: Request,
   res: Response
@@ -22,7 +21,6 @@ export const getAllCustomers = async (
   }
 };
 
-// Get customer by ID
 export const getCustomerById = async (
   req: Request,
   res: Response
@@ -41,7 +39,6 @@ export const getCustomerById = async (
   }
 };
 
-// Get all managers
 export const getAllManagers = async (
   req: Request,
   res: Response
@@ -60,7 +57,6 @@ export const getAllManagers = async (
   }
 };
 
-// Get manager by ID
 export const getManagerById = async (
   req: Request,
   res: Response

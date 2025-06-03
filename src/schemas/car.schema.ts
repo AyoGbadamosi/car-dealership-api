@@ -88,7 +88,6 @@ export const carSchema = new Schema<ICar>(
   }
 );
 
-// Index for faster queries
 carSchema.index({ make: 1, modelName: 1, year: 1 });
 carSchema.index({ status: 1 });
 carSchema.index({ category: 1 });

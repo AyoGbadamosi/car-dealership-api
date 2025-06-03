@@ -8,7 +8,6 @@ import { CategoryService } from "../services/category.service";
 
 const categoryService = new CategoryService();
 
-// Create a new category
 export const createCategory = async (
   req: AuthenticatedRequest,
   res: Response
@@ -35,7 +34,6 @@ export const createCategory = async (
   }
 };
 
-// Get all categories
 export const getCategories = async (
   req: Request,
   res: Response
@@ -55,7 +53,6 @@ export const getCategories = async (
   }
 };
 
-// Get category by ID
 export const getCategoryById = async (
   req: Request,
   res: Response
@@ -75,7 +72,6 @@ export const getCategoryById = async (
   }
 };
 
-// Update category
 export const updateCategory = async (
   req: AuthenticatedRequest,
   res: Response
@@ -105,7 +101,6 @@ export const updateCategory = async (
   }
 };
 
-// Delete category
 export const deleteCategory = async (
   req: AuthenticatedRequest,
   res: Response

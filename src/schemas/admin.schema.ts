@@ -33,5 +33,4 @@ export const adminSchema = new Schema<IAdmin>(
   }
 );
 
-// Add password methods
 addPasswordMethods(adminSchema);

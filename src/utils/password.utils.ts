@@ -13,9 +13,7 @@ export const comparePassword = async (
   return bcrypt.compare(candidatePassword, hashedPassword);
 };
 
-// Add password methods to a schema
 export const addPasswordMethods = (schema: Schema) => {
-  // Hash password before saving
   schema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
 
@@ -27,7 +25,6 @@ export const addPasswordMethods = (schema: Schema) => {
     }
   });
 
-  // Compare password method
   schema.methods.comparePassword = async function (
     candidatePassword: string
   ): Promise<boolean> {

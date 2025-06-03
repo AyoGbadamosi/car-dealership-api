@@ -5,8 +5,7 @@ dotenv.config();
 
 const connectDB = async (): Promise<void> => {
   try {
-    const mongoURI =
-      process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/car-dealership";
+    const mongoURI = process.env.MONGODB_URI as string;
     const conn = await mongoose.connect(mongoURI);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {

@@ -52,8 +52,6 @@ export const managerSchema = new Schema<IManager>(
   }
 );
 
-// Add password methods
 addPasswordMethods(managerSchema);
 
-// Indexes
 managerSchema.index({ isActive: 1 });

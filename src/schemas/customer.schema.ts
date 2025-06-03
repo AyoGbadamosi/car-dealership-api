@@ -85,5 +85,4 @@ export const customerSchema = new Schema<ICustomer>(
   }
 );
 
-// Add password methods
 addPasswordMethods(customerSchema);

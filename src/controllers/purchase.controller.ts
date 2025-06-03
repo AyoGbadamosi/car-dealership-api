@@ -5,13 +5,11 @@ import { UserRole } from "../enums/role.enum";
 
 const purchaseService = new PurchaseService();
 
-// Create a new purchase
 export const createPurchase = async (
   req: AuthenticatedRequest,
   res: Response
 ): Promise<void> => {
   try {
-    // Check if user is authenticated and is a customer
     if (!req.user || req.user.role !== UserRole.CUSTOMER) {
       res.status(403).json({
         message: "Only customers can make purchases",
@@ -45,7 +43,6 @@ export const createPurchase = async (
   }
 };
 
-// Get purchase by ID
 export const getPurchaseById = async (
   req: Request,
   res: Response
@@ -65,7 +62,6 @@ export const getPurchaseById = async (
   }
 };
 
-// Get customer's purchases
 export const getCustomerPurchases = async (
   req: AuthenticatedRequest,
   res: Response
@@ -86,7 +82,6 @@ export const getCustomerPurchases = async (
   }
 };
 
-// Get all purchases (admin/manager only)
 export const getAllPurchases = async (
   req: AuthenticatedRequest,
   res: Response

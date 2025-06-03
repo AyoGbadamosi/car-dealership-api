@@ -35,7 +35,6 @@ export const purchaseSchema = new Schema<IPurchase>(
   }
 );
 
-// Indexes
 purchaseSchema.index({ carId: 1 });
 purchaseSchema.index({ customerId: 1 });
 purchaseSchema.index({ purchaseDate: 1 });

@@ -9,23 +9,19 @@ export class PurchaseService {
     purchasePrice: number,
     paymentMethod: string
   ) {
-    // Check if car exists
     const car = await Car.findById(carId);
     if (!car) {
       throw new Error("Car not found");
     }
 
-    // Check if car is available
     if (car.status !== CarStatus.AVAILABLE) {
       throw new Error("Car is not available for purchase");
     }
 
-    // Validate purchase price matches car price
     if (car.price !== purchasePrice) {
       throw new Error("Purchase price does not match car price");
     }
 
-    // Create purchase
     const purchase = await Purchase.create({
       carId,
       customerId,
@@ -33,7 +29,6 @@ export class PurchaseService {
       paymentMethod,
     });
 
-    // Update car status to sold
     car.status = CarStatus.SOLD;
     await car.save();
 
