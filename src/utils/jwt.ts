@@ -2,7 +2,6 @@ import jwt, { SignOptions } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { IManager, ICustomer, IAdmin } from "../interfaces";
 
-dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET as string;
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "2h";
 

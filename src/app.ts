@@ -10,8 +10,6 @@ import categoryRoutes from "./routes/category.routes";
 import userRoutes from "./routes/user.routes";
 import purchaseRoutes from "./routes/purchase.routes";
 
-config();
-
 const app: Express = express();
 
 if (process.env.NODE_ENV !== "test") {
