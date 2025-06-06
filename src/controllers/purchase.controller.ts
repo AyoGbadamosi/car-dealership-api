@@ -100,3 +100,33 @@ export const getAllPurchases = async (
     });
   }
 };
+
+export const getCustomerPurchaseById = async (
+  req: AuthenticatedRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const customerId = req.user?.id;
+    const purchaseId = req.params.id;
+
+    const purchase = await purchaseService.getPurchaseById(purchaseId);
+
+    // Check if the purchase belongs to the requesting customer
+    if (purchase.customerId._id.toString() !== customerId) {
+      res.status(403).json({
+        message: "You are not authorized to view this purchase",
+      });
+      return;
+    }
+
+    res.json({
+      message: "Purchase retrieved successfully",
+      data: purchase,
+    });
+  } catch (error: any) {
+    res.status(404).json({
+      message: "Failed to retrieve purchase",
+      error: error.message,
+    });
+  }
+};

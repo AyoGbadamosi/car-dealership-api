@@ -33,4 +33,5 @@ export const adminSchema = new Schema<IAdmin>(
   }
 );
 
+// Add password hashing and comparison methods
 addPasswordMethods(adminSchema);

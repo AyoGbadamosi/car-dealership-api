@@ -11,14 +11,13 @@ import {
 import {
   formatManagerResponse,
   formatCustomerResponse,
+  formatAdminResponse,
 } from "../utils/format.utils";
 import { IAdmin } from "../interfaces/index";
 
 export class AuthService {
   async registerManager(managerData: ManagerRegisterInput) {
-    const existingManager = await Manager.findOne({
-      where: { email: managerData.email },
-    });
+    const existingManager = await Manager.findOne({ email: managerData.email });
 
     if (existingManager) {
       throw new Error("Email already registered");
@@ -135,14 +134,15 @@ export class AuthService {
       throw new Error("Invalid credentials");
     }
 
+    // Update last login
+    admin.lastLogin = new Date();
+    await admin.save();
+
     const token = generateToken(admin as IAdmin);
+    const userResponse = formatAdminResponse(admin);
 
     return {
-      user: {
-        id: admin._id,
-        email: admin.email,
-        role: admin.role,
-      },
+      user: userResponse,
       token,
     };
   }

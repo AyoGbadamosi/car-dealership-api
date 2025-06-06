@@ -1,5 +1,6 @@
 import { IManager } from "../interfaces/manager.interface";
 import { ICustomer } from "../interfaces/customer.interface";
+import { IAdmin } from "../interfaces/admin.interface";
 
 export const formatManagerResponse = (manager: IManager) => {
   const { password, __v, ...managerData } = manager.toObject();
@@ -32,5 +33,17 @@ export const formatCustomerResponse = (customer: ICustomer) => {
     lastLogin: customerData.lastLogin,
     createdAt: customerData.createdAt,
     updatedAt: customerData.updatedAt,
+  };
+};
+
+export const formatAdminResponse = (admin: IAdmin) => {
+  const { password, __v, ...adminData } = admin.toObject();
+  return {
+    id: adminData._id,
+    email: adminData.email,
+    role: adminData.role,
+    lastLogin: adminData.lastLogin,
+    createdAt: adminData.createdAt,
+    updatedAt: adminData.updatedAt,
   };
 };

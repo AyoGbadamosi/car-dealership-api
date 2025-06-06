@@ -9,6 +9,7 @@ import {
   getPurchaseById,
   getCustomerPurchases,
   getAllPurchases,
+  getCustomerPurchaseById,
 } from "../controllers/purchase.controller";
 
 const router = Router();
@@ -21,6 +22,12 @@ router.get(
   "/my-purchases",
   authorize([UserRole.CUSTOMER]),
   getCustomerPurchases
+);
+router.get(
+  "/my-purchases/:id",
+  authorize([UserRole.CUSTOMER]),
+  validateObjectId,
+  getCustomerPurchaseById
 );
 
 // Protected routes (manager and admin only)

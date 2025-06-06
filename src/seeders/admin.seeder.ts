@@ -3,6 +3,7 @@ import { UserRole } from "../enums/role.enum";
 import dotenv from "dotenv";
 import Admin from "../models/Admin";
 
+dotenv.config();
 const seedAdmin = async (): Promise<void> => {
   try {
     await mongoose.connect(process.env.MONGODB_URI as string);
