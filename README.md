@@ -62,6 +62,15 @@ For development with hot-reload:
 npm run dev
 ```
 
+### Default Admin User
+
+A default admin user is automatically created when you first start the application. You can use these credentials to log in:
+
+- Email: admin@cardealers.com
+- Password: Password1@
+
+**Important**: For security reasons, make sure to change the default admin password after your first login.
+
 ## API Endpoints
 
 ### Authentication
@@ -92,8 +101,9 @@ npm run dev
 
 ### Purchases
 
-- `POST /api/purchases` - Create a new purchase (Customer only)
-- `GET /api/purchases/my-purchases` - Get customer's purchases
+- `POST /api/purchases` - Create a new purchase (Authenticated users)
+- `GET /api/purchases/my-purchases` - Get customer's purchases (Customer only)
+- `GET /api/purchases/my-purchases/:id` - Get specific purchase by ID (Customer only)
 - `GET /api/purchases` - Get all purchases (Admin/Manager only)
 - `GET /api/purchases/:id` - Get purchase by ID (Admin/Manager only)
 
@@ -120,6 +130,7 @@ src/
 - `npm run dev` - Start the server with hot-reload
 - `npm run build` - Build the TypeScript code
 - `npm run seed:admin` - Seed the admin user
+- `npm run test` - Run the test suite
 
 ## Error Handling
 
